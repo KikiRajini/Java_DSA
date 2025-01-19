@@ -33,6 +33,7 @@ _Some extra functions_:
 4. StringUtils.isAlphanumeric(str);
 5. str.tolowerCase();
 6. str1.equalsIgnoreCase(str2);
+7. str.charAt(index);
 
 
 **ArrayList** : ArrayList (Class) -> Implements -> List (Interface) -> Extends -> Collection
