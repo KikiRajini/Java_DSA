@@ -1,7 +1,7 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String,List<String>> result = new HashMap<>();
-    
+        // Key: sorted string, Value: Strings whcihc are anagrams if the sorted string
         for( int i =0; i< strs.length; i++){
             char[] charArray = strs[i].toCharArray();
             Arrays.sort(charArray);
