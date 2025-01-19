@@ -14,3 +14,12 @@ class Solution {
         return false;
     }
 }
+
+Character	ASCII Value
+'A'	        65
+'B'	        66
+'a'	        97
+'b'	        98
+'0'	        48
+'1'	        49
+' ' (space)	32
