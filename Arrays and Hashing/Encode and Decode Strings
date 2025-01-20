@@ -1,0 +1,55 @@
+Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings.
+Please implement encode and decode
+
+Example 1:
+Input: ["neet","code","love","you"]
+Output:["neet","code","love","you"]
+
+Example 2:
+Input: ["we","say",":","yes"]
+Output: ["we","say",":","yes"]
+
+Constraints:
+0 <= strs.length < 100
+0 <= strs[i].length < 200
+strs[i] contains only UTF-8 characters.
+
+
+
+class Solution {
+
+           public String encode(List<String> strs) {
+            StringBuilder sb = new StringBuilder();
+            for (String s : strs){
+//since max length is given as 200, we store length of the string in the first 3 places before the string. Eg. we -> 002; like -> 004; 1234567890 ->010;
+                if(s.length()<10) {
+                    sb.append("00" + s.length());
+                }else if(s.length() <100){
+                    sb.append("0" + s.length());
+                }else{
+                    sb.append(s.length());
+                }
+                sb.append(s);
+            }
+            return sb.toString();
+        }
+
+        public List<String> decode(String str) {
+            int start = 0;
+            int end = 0;
+            int length =0;
+            StringBuilder sb = new StringBuilder(str);
+            List<String> result = new ArrayList<>();
+            while(start<str.length()){
+
+                length = Integer.parseInt(sb.substring(start,start+3));
+                end = length+start+3;
+                result.add(sb.substring(start+3,end));
+                start = end;
+
+            }
+            return result;
+
+        }
+}
+
