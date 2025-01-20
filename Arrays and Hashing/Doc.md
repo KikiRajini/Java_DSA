@@ -34,6 +34,12 @@ _Some extra functions_:
 5. str.tolowerCase();
 6. str1.equalsIgnoreCase(str2);
 7. str.charAt(index);
+8. Integer.parseInt(str);
+9. String Builder:
+    StringBuilder sb = new StringBuilder(str); or can create empty using StringBuilder sb = new StringBuilder();
+    sb.append(str);
+    sb.toString();
+    String s = sb.substring(start,end);
 
 
 **ArrayList** : ArrayList (Class) -> Implements -> List (Interface) -> Extends -> Collection
@@ -88,7 +94,7 @@ _Functions_:
 8. map.containsValue(value);
 9. map1.equals(map2);
 10. map.isEmpty();
-11. map.getOrDefault(key, default_value); -> returns value associated with key. If key doesn`t exists, put default_value for key in map
+11. map.getOrDefault(key, default_value); -> returns value associated with key. If key doesn`t exists, put default_value for key in map and returns new value.
 12. map.putIfAbsent(key,value); -> Puts key and value and returns null. Doesn`t overwrite if already exists and returns original value.
 13. map.computeIfAbsent(key, func); -> returns value if key exists, else computes using function and returns that val.
 14. map.keySet();
