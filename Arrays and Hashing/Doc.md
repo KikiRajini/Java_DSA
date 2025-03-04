@@ -41,9 +41,11 @@ _Some extra functions_:
     sb.toString();
     String s = sb.substring(start,end);
 
+**List** : In Java, a List is a part of the Java Collections Framework and represents an ordered collection (or sequence) of elements. The List interface is implemented by several classes, such as ArrayList, LinkedList, and Vector.
+
 
 **ArrayList** : ArrayList (Class) -> Implements -> List (Interface) -> Extends -> Collection
-Class provides dynamic array. 
+Class provides dynamic array. Can have only wrapper class objects like Integer
 + Need not mentions size when initialising. If size increases, creates bigger memory on heap, copies data and deletes old memory.
 + Insertion order is preserved.
 + Null insertion is possible.
