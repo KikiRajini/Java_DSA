@@ -1,4 +1,7 @@
-Question: Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
+package Arrays_And_Hashing;
+
+
+/*Question: Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
 
 Example 1:
 Input: nums = [1, 2, 3, 3]
@@ -6,11 +9,12 @@ Output: true
 
 Example 2:
 Input: nums = [1, 2, 3, 4]
-Output: false
+Output: false */
 
+import java.util.HashSet;
 
-class Solution {
-       public boolean containsDuplicate(int[] nums) {
+public class Contains_Duplicate {
+    public boolean containsDuplicate(int[] nums) {
         HashSet<Integer> set=new HashSet<>();
         for(int i=0; i<nums.length;i++){
             boolean res=set.add(nums[i]); //return false if element is already there
