@@ -12,15 +12,19 @@ Input: nums = [1, 2, 3, 4]
 Output: false */
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class Contains_Duplicate {
-    public boolean containsDuplicate(int[] nums) {
-        HashSet<Integer> set=new HashSet<>();
-        for(int i=0; i<nums.length;i++){
-            boolean res=set.add(nums[i]); //return false if element is already there
-            if(!res){
-                return true;
+
+        public boolean hasDuplicate(int[] nums) {
+            Set<Integer> tracker = new HashSet<>();
+            for(int i :  nums){
+                if(tracker.contains(i)){
+                    return true;
+                }else{
+                    tracker.add(i);
+                }
             }
-        } return false;
-    }
+            return false;
+        }
 }
