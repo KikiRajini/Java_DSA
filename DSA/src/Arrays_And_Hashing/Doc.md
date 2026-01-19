@@ -81,7 +81,13 @@ _Implementation_:
   The hash function that maps keys to some values. Key -> Hash_Func -> HashCode -> func -> Index in array.
   If multiple key has same index (Hash collision) -> value is stored in linked list in index and uses hashcode to retrieve respective value.
 2. LinkedHashMap: Map<String, Integer> map = new LinkedHashMap<>();
+   ✔ Maintains insertion order
+   ✔ Internally:
+   • HashMap
+   • PLUS doubly linked list
 3. TreeMap: Map<String, Integer> map = new TreeMap<>(); -> Internally uses binary search tree.
+   ✔ Uses Red-Black Tree
+   ✔ Keys stored in sorted order
 > Map<String, Integer> map = new TreeMap<>(Comparator.reverseOrder());
 
 
@@ -129,11 +135,112 @@ _Functions_:
 
 
 
+**PriorityQueue** - Heap Data structure:
+1. Default PriorityQueue (Min Heap)
+   PriorityQueue<Integer> pq = new PriorityQueue<>();
+   • Smallest element is always on top
+   • peek() gives smallest
+   • poll() removes smallest
+2. How to make a MAX HEAP
+   Method 1: Using Collections.reverseOrder()
+   PriorityQueue<Integer> pq =
+   new PriorityQueue<>(Collections.reverseOrder());
+   Now:
+   • Largest element on top
+   • peek() → max
+   • poll() → removes max
+   Method 2: Custom Comparator
+   PriorityQueue<Integer> pq =
+   new PriorityQueue<>((a, b) -> b - a);
+   Same effect:
+   • Bigger value gets higher priority
+3. Important PriorityQueue Operations
+   Operation	Code	    What it does	Time
+   Insert	   pq.add(x)	Add element	    O(log n)
+   Insert	   pq.offer(x)	Same as add	    O(log n)
+   Remove top  pq.poll()	Removes min/max	O(log n)
+   View top	   pq.peek()	Returns top	    O(1)
+   Size	       pq.size()	Count elements	O(1)
+   CheckEmpty  pq.isEmpty()	True/false	    O(1)
+   Remove      pq.remove(x)	Removes     	O(n)
+   Clear	   pq.clear()	Remove all	    O(n)
 
 
+**String**:
+For length -> String.length();
+For slicing -:
+substring(start, end)
+start → included
+end   → excluded
+
+1) Using + Operator
+   String s = "Hello";
+   s = s + " World";
+   Internals
+   • Creates new String object every time
+   • Old string becomes garbage
+   Complexity
+   • Time → O(n) per concatenation
+   • Space → O(n) (new object)
+   Use when
+   ✔ Very few concatenations
+   ❌ Inside loops (bad)
+2) String.concat()
+   String s = "Hello".concat(" World");
+   Same as + internally.
+   Complexity
+   • Time → O(n)
+   • Space → O(n)
+3) StringBuilder (BEST for interviews)
+   StringBuilder sb = new StringBuilder();
+   sb.append("Hello");
+   sb.append(" World");
+   String s = sb.toString();
+   Why best?
+   • Mutable
+   • No new object each time
+   • Fast
+   Complexity
+   • append → O(1) amortized
+   • Space → O(n)
+   Use when
+   ✔ Building strings in loops
+   ✔ Performance critical code
+4) StringBuffer
+   StringBuffer sb = new StringBuffer();
+   sb.append("Hello");
+   Same as StringBuilder but:
+   • Thread-safe
+   • Synchronized → slower
+   Use when
+   ✔ Multi-threaded environment
+5) String.format()
+   String s = String.format("Name: %s Age: %d", name, age);
+   Complexity
+   • Slower
+   • More overhead
+   Use when
+   ✔ Formatting output
+   ❌ Performance critical paths
+6) String.join()
+   String s = String.join(",", "A", "B", "C");
+   Use when
+   ✔ Joining multiple strings with delimiter
+7) Using char[]
+   char[] arr = {'H','i'};
+   String s = new String(arr);
+   Use when
+   ✔ Low-level manipulation
+   ✔ Passwords (security)
+8) Using Streams
+   String s = list.stream()
+   .collect(Collectors.joining(","));
+   Use when
+   ✔ Working with collections
 
 
-
+**Additional**:
+log n << n < n log n
 
 
 
