@@ -241,7 +241,8 @@ end   → excluded
 
 **Additional**:
 log n << n < n log n
-
+/ -> gives quotient
+% -> gives remainder
 
 
 
