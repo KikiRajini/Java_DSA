@@ -19,7 +19,7 @@ public class CarFleet {
             //compute time and club into fleets
             double time = (double)(target - pair[0]) / pair[1];
 
-            // if this car catches up, merge fleet
+            // if this car catches up, merge fleet --dont increase stack size. Only when time taken is more, it forms seperate fleet
             if(!numOfFleets.isEmpty() && time <= numOfFleets.peek()){
                 continue;
             }
