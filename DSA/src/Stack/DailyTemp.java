@@ -20,3 +20,9 @@ public class DailyTemp {
 
     }
 }
+
+/*🧠 How it works
+Monotonic decreasing stack:
+[73,74,75,71,69,72,76,73]
+We keep indexes of days waiting for warmer temp.
+When a warmer temp arrives → resolve all smaller ones.*/
