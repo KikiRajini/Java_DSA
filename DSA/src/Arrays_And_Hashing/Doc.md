@@ -11,9 +11,9 @@ _Instantiating_ : var_name = new type[size]; //allocates memory to array.
 _Access element_: var_name[position]
 _Update element:_ var_name[position] = value;
 - Fixed size
-+ Makes memory nmanagement easier
++ Makes memory management easier
 
-1. Length: arr.length
+1. Length: arr.length --Ia a property -- O(1)
 2. Clone: arr1 = arr.clone() -> Only primitive values are deeply copied. For objects, references are copied and objects are not duplicated.
 
 _Array Class functions_:
