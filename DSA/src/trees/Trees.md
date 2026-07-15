@@ -18,16 +18,57 @@
 BFS is almost always implemented iteratively using a `Queue`.
 
 ```java
-public void bfs(TreeNode root) {
-    if (root == null) return;
-    Queue<TreeNode> queue = new linkedList<>();
-    queue.add(root);
 
-    while (!queue.isEmpty()) {
-        TreeNode current = queue.poll();
-        // Process current node...
-        if (current.left != null) queue.add(current.left);
-        if (current.right != null) queue.add(current.right);
+
+class Solution {
+    // Standard LeetCode TreeNode definition
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        // Edge Case Safety Guard
+        if (root == null) return result;
+
+        // The Engine Line: First-In, First-Out (FIFO)
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        // Initialize: Load the starting node (Level 0)
+        queue.add(root);
+
+        // OUTER LOOP: Processes Level-by-Level
+        while (!queue.isEmpty()) {
+            // Snapshot the exact number of elements on THIS current level
+            int levelSize = queue.size();
+            List<Integer> currentLevelData = new ArrayList<>();
+
+            // INNER LOOP: Process all elements belonging to this current level ONLY
+            for (int i = 0; i < levelSize; i++) {
+                // Take the front node out of the queue line
+                TreeNode currentNode = queue.poll();
+
+                // Collect its value
+                currentLevelData.add(currentNode.val);
+
+                // Load the next level's children into the back of the queue
+                if (currentNode.left != null) {
+                    queue.add(currentNode.left);
+                }
+                if (currentNode.right != null) {
+                    queue.add(currentNode.right);
+                }
+            }
+
+            // Once the level size loop finishes, the entire current row is collected
+            result.add(currentLevelData);
+        }
+
+        return result;
     }
 }
 
@@ -40,30 +81,67 @@ public void bfs(TreeNode root) {
 #### Approach A: Recursive (Most Common)
 
 ```java
-public void dfsRecursive(TreeNode root) {
-    if (root == null) return;
-    // Process node here (Pre-order)
-    dfsRecursive(root.left);
-    dfsRecursive(root.right);
-}
+import java.util.ArrayList;
+import java.util.List;
 
+class Solution {
+    // Standard LeetCode TreeNode definition
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        // Launch the recursive DFS tracking rocket
+        dfs(root, result);
+        return result;
+    }
+
+    private void dfs(TreeNode node, List<Integer> result) {
+        // RULE 1: THE BASE CASE (The Dead End Guard)
+        // If we fall off the edge of a leaf node into a null space, turn back immediately.
+        if (node == null) {
+            return;
+        }
+
+        // 1. CHOOSE: Process the current node we are standing on
+        result.add(node.val);
+
+        // 2. EXPLORE DEEP LEFT: Dive completely down the left subtree
+        dfs(node.left, result);
+
+        // 3. EXPLORE DEEP RIGHT: Dive completely down the right subtree
+        dfs(node.right, result);
+
+        // 4. BACKTRACK: Automatically occurs when the method frame finishes executing 
+        // and returns control to the parent caller up the stack frame.
+    }
+}
 ```
 
 #### Approach B: Iterative (Using a stack)
 
 ```java
-public void dfsIterative(TreeNode root) {
-    if (root == null) return;
-    stack<TreeNode> stack = new stack<>();
+// Iterative Pre-Order Tree DFS
+public List<Integer> preorderTraversal(TreeNode root) {
+    List<Integer> result = new ArrayList<>();
+    if (root == null) return result;
+
+    Stack<TreeNode> stack = new Stack<>();
     stack.push(root);
 
     while (!stack.isEmpty()) {
         TreeNode current = stack.pop();
-        // Process node...
-        // Push Right before Left so Left is processed first
+        result.add(current.val);
+
+        // Right child is pushed FIRST so that Left child is popped and processed first (LIFO)
         if (current.right != null) stack.push(current.right);
         if (current.left != null) stack.push(current.left);
     }
+    return result;
 }
 
 ```
